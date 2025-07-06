@@ -2,19 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Friendship Surprise with Animated Intro + Music</title>
+  <title>Friendship Surprise with Premium Intro + Music</title>
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto&display=swap" rel="stylesheet">
   <style>
-    /* Animated Background */
+    /* Premium Gradient Background */
     #intro {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(270deg, #ff4d88, #ff9933, #33cc33, #3399ff, #ff4d88);
-      background-size: 800% 800%;
-      animation: backgroundWave 10s ease infinite;
+      background: linear-gradient(135deg, #000428, #004e92);
+      background-size: cover;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -24,53 +23,32 @@
       overflow: hidden;
     }
 
-    @keyframes backgroundWave {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    /* Text Animation */
+    /* Typing Effect Text */
     #introText {
-      font-size: 2.8em;
-      background: linear-gradient(90deg, #ff4d88, #ff9933, #33cc33, #3399ff, #ff4d88);
-      background-size: 300% 300%;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: gradientMove 5s ease infinite, textEntry 2s ease forwards;
-      text-align: center;
-      font-weight: bold;
-      text-shadow: 0 0 15px rgba(255, 77, 136, 0.8), 0 0 25px rgba(255, 77, 136, 0.8);
-      opacity: 0;
-      transform: scale(0.5) rotate(-15deg);
+      font-size: 3.5em;
+      color: #ffffff;
+      text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+      white-space: nowrap;
+      border-right: 3px solid #fff;
+      overflow: hidden;
+      width: 0;
+      animation: typing 4s steps(30, end) forwards, blink 0.75s step-end infinite;
     }
 
-    @keyframes gradientMove {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
     }
 
-    @keyframes textEntry {
-      0% {
-        opacity: 0;
-        transform: scale(0.5) rotate(-15deg);
-      }
-      50% {
-        opacity: 1;
-        transform: scale(1.2) rotate(5deg);
-      }
-      100% {
-        opacity: 1;
-        transform: scale(1) rotate(0deg);
-      }
+    @keyframes blink {
+      50% { border-color: transparent; }
     }
 
     /* Rest of Website */
     body {
       margin: 0;
       padding: 50px;
-      background: radial-gradient(circle, #ffd6e0, #ffe6f7);
+      background: radial-gradient(circle, #e0eafc, #cfdef3);
       font-family: 'Roboto', sans-serif;
       text-align: center;
       overflow-x: hidden;
@@ -78,7 +56,7 @@
 
     h1 {
       font-family: 'Pacifico', cursive;
-      color: #ff4d88;
+      color: #004e92;
       font-size: 3em;
       animation: fadeIn 2s ease-out;
     }
@@ -96,7 +74,7 @@
 
     button {
       padding: 15px 40px;
-      background: #ff4d88;
+      background: #004e92;
       color: white;
       border: none;
       border-radius: 50px;
@@ -104,35 +82,23 @@
       cursor: pointer;
       box-shadow: 0 4px 20px rgba(0,0,0,0.2);
       transition: transform 0.3s ease, background 0.3s ease;
-      animation: glow 2s infinite alternate;
     }
 
     button:hover {
-      background: #e6005c;
+      background: #000428;
       transform: scale(1.1);
-    }
-
-    @keyframes glow {
-      from { box-shadow: 0 0 15px #ff99bb; }
-      to { box-shadow: 0 0 30px #ff4d88; }
     }
 
     .corner-btn {
       position: fixed;
       display: none;
       padding: 10px 20px;
-      background: #ff4d88;
+      background: #004e92;
       color: #fff;
       border: none;
       border-radius: 20px;
       font-size: 0.9em;
       cursor: pointer;
-      animation: bounce 2s infinite;
-    }
-
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
     }
 
     #topCornerBtn {
@@ -148,10 +114,10 @@
     .hint {
       font-size: 0.9em;
       color: #888;
-      animation: blink 1s infinite alternate;
+      animation: blinkHint 1s infinite alternate;
     }
 
-    @keyframes blink {
+    @keyframes blinkHint {
       from { opacity: 1; }
       to { opacity: 0.4; }
     }
@@ -182,7 +148,7 @@
       setTimeout(() => {
         document.getElementById('intro').style.transition = 'opacity 2s ease, transform 2s ease';
         document.getElementById('intro').style.opacity = '0';
-        document.getElementById('intro').style.transform = 'scale(1.2)';
+        document.getElementById('intro').style.transform = 'scale(1.1)';
 
         const music = document.getElementById('introMusic');
         const fadeOutMusic = setInterval(() => {
@@ -192,12 +158,12 @@
             clearInterval(fadeOutMusic);
             music.pause();
           }
-        }, 100); // Smooth fade every 100ms
+        }, 100);
 
         setTimeout(() => {
           document.getElementById('intro').remove();
-        }, 2000);
-      }, 3000); // 3 sec show time
+        }, 2500);
+      }, 4500);
     };
 
     // Website Button Functions
@@ -214,7 +180,7 @@
     }
 
     function stepThree() {
-      window.location.href = "friend.html"; // Link to next page
+      window.location.href = "friend.html";
     }
   </script>
 </body>
